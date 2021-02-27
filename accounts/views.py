@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 def home_view(request):
-    return HttpResponse("Home Page")
+    return render(request, 'accounts/dashboard.html')
 
 
 def product_view(request):
