@@ -1,0 +1,11 @@
+{
+    "git.path": "C:\\Users\\HP\\AppData\\Local\\Programs\\Git\\bin\\git.exe",
+    "python.pythonPath": "C:\\Users\\HP\\.virtualenvs\\djangoCRM-qZI6y0_e\\Scripts\\python.exe",
+    "python.autoComplete.extraPaths": ["C:\\Users\\HP\\.virtualenvs\\djangoCRM-qZI6y0_e\\Scripts\\python.exe"],
+    "editor.formatOnPaste": true,
+    "python.formatting.provider": "autopep8",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylamaArgs": [ "--load-plugin=pylint_django"]
+}
