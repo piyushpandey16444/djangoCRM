@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer, Order, Product
+from .models import Customer, Order, Product, Tag
 from django.utils.html import format_html
 
 
@@ -29,9 +29,16 @@ class CustomerAdmin(admin.ModelAdmin):
     upper_case_name.short_description = 'Name Given'
 
 
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    list_display_links = ('name',)
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'category', 'description', 'date_created', 'write_date')
+    list_display = ('name', 'price', 'category',
+                    'description', 'date_created', 'write_date')
     list_display_links = ('name', 'price', 'category',
                           'description', 'date_created', 'write_date')
     date_hierarchy = 'date_created'

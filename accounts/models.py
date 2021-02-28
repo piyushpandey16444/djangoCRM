@@ -12,6 +12,14 @@ class Customer(models.Model):
         return self.name
 
 
+class Tag(models.Model):
+    name = models.CharField(
+        "Customer Name", max_length=255, null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     CATEGORY = (
         ('indoor', 'Indoor'),
@@ -24,6 +32,7 @@ class Product(models.Model):
     date_created = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
     write_date = models.DateTimeField(auto_now=False, null=True, blank=True)
+    tag_ids = models.ManyToManyField("accounts.Tag", verbose_name=("Tag Ids"))
 
     def __str__(self):
         return self.name
