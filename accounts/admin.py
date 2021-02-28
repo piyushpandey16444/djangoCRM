@@ -3,6 +3,10 @@ from .models import Customer, Order, Product
 from django.utils.html import format_html
 
 
+class OrderInline(admin.TabularInline):
+    model = Order
+    raw_id_fields = ("customer", "product")
+
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
@@ -11,6 +15,9 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display_links = ('upper_case_name', 'email', 'phone',
                           'date_created', 'write_date')
     date_hierarchy = 'date_created'
+    inlines = [
+        OrderInline,
+    ]
 
     def upper_case_name(self, obj):
         return f"{(obj.name).upper()}"
@@ -27,9 +34,12 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('colored_status', 'date_created', 'write_date')
-    list_display_links = ('colored_status', 'date_created', 'write_date')
+    list_display = ('customer', 'product', 'colored_status', 'date_created', 'write_date')
+    list_display_links = ('customer', 'product',
+                          'colored_status', 'date_created', 'write_date')
     date_hierarchy = 'date_created'
+    list_filter = ('status',)
+
 
     def colored_status(self, obj):
         if obj.status == 'pending':

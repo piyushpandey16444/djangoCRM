@@ -35,6 +35,8 @@ class Order(models.Model):
         ('out_for_delivery', 'Out for delivery'),
         ('delivered', 'Delivered')
     )
+    customer = models.ForeignKey("accounts.Customer", verbose_name=("Customer"), on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.ForeignKey("accounts.Product", verbose_name=("Product"), on_delete=models.SET_NULL, null=True, blank=True)
     status = models.CharField(max_length=250, choices=STATUS, null=True, blank=True)
     date_created = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
