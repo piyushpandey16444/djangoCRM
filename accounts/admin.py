@@ -5,7 +5,6 @@ from django.utils.html import format_html
 
 class OrderInline(admin.TabularInline):
     model = Order
-    raw_id_fields = ("customer", "product")
 
 
 @admin.register(Customer)
@@ -18,6 +17,12 @@ class CustomerAdmin(admin.ModelAdmin):
     inlines = [
         OrderInline,
     ]
+    list_filter = ('order__status',)
+    ordering = ['date_created']
+    search_fields = ['name__startswith']
+    readonly_fields = ('date_created', 'write_date',)
+
+
 
     def upper_case_name(self, obj):
         return f"{(obj.name).upper()}"
