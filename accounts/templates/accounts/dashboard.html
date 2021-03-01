@@ -4,7 +4,6 @@
 Dashboard
 {% endblock title %}
 
-
 {% block content %}
 
 {% include 'accounts/status.html' %}
@@ -15,12 +14,14 @@ Dashboard
         <h5>CUSTOMERS</h5>
         <hr>
         <div class="card card-body">
-            <a href="" class="btn btn-primary btn-sm btn-block">Create Customer</a>
-            <table class="table table-sm">
-                <tr>
-                    <th>Customers</th>
-                    <th>Phone Number</th>
-                </tr>
+            <a href="" class="mb-2 btn btn-primary btn-sm btn-block">Create Customer</a>
+            <table class="table table-sm table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Customers</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead class="thead-light">
 
                 {% for cx in customer_objs %}
                     <tr>
@@ -37,29 +38,31 @@ Dashboard
         <h5>LAST 5 PRODUCTS</h5>
         <hr>
         <div class="card card-body">
-            <a href="" class="btn btn-primary btn-sm btn-block">Create Order</a>
-            <table class="table table-sm">
-                <tr>
-                    <th></th>
-                    <th>Product</th>
-                    <th>Date Ordered</th>
-                    <th>Status</th>
-                    <th>Update</th>
-                    <th>Remove</th>
-                </tr>
-
-                {% for order in order_objs %}
-                    <tr>
-                        <td></td>
-                        <td>{{ order.product }}</td>
-                        <td>{{ order.date_created }}</td>
-                        <td>{{ order.status }}</td>
-                        <td><a href="#" class="btn btn-primary btn-sm btn-block">Update</a></td>
-                        <td><a href="#" class="btn btn-danger btn-sm btn-block">Delete</a></td>
-                    </tr>
-                {% endfor %}
-
-            </table>
+            <a href="" class="mb-2 btn btn-primary btn-sm btn-block">Create Order</a>
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Date Ordered</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead class="thead-light">
+                
+                    {% for order in order_objs %}
+                        <tr>
+                            <td>{{ order.product }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>{{ order.date_created }}</td>
+                            <td><a href="#" class="btn btn-primary btn-sm btn-block">Update</a></td>
+                            <td><a href="#" class="btn btn-danger btn-sm btn-block">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                
+                </table>
+            </div>
         </div>
     </div>
 </div>
