@@ -15,12 +15,19 @@ Products
             <h5>Products</h5>
         </div>
         <div class="card card-body">
-            <table class="table">
+            <table class="table table-success">
                 <tr>
                     <th>Product</th>
                     <th>Category</th>
                     <th>Price</th>
                 </tr>
+                {% for product in product_objs %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.category }}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
